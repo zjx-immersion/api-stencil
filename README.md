@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zjx-immersion/api-stencil.svg?branch=master)](https://travis-ci.org/zjx-immersion/api-stencil)
+
 # Springboot API stencil
 
 ## Development
