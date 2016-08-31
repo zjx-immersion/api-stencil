@@ -1,24 +1,31 @@
 package de.stytex.foobar.domain;
 
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A Foo.
  */
-@Entity
-@Table(name = "foo")
+//@Entity
+//@Table(name = "foo")
 public class Foo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Foo() {
+    }
+
+    public Foo(Long id, String value) {
+        this.id = id;
+        this.value = value;
+    }
+
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "value")
+//    @Column(name = "value")
     private String value;
 
     public Long getId() {

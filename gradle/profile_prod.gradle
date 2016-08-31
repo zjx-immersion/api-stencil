@@ -1,4 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.Os
 apply plugin: 'spring-boot'
 
 ext {
@@ -10,9 +9,9 @@ dependencies {
 }
 
 def profiles = 'prod'
-if (project.hasProperty('no-liquibase')) {
-    profiles += ',no-liquibase'
-}
+//if (project.hasProperty('no-liquibase')) {
+//    profiles += ',no-liquibase'
+//}
 
 if (project.hasProperty('no-cache')) {
     profiles += ',no-cache'

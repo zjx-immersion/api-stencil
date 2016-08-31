@@ -36,7 +36,10 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
             .antMatchers("/swagger-ui/index.html")
             .antMatchers("/test/**")
             .antMatchers("/api/*") //for testing purposes
-            .antMatchers("/h2-console/**");
+            .antMatchers("/h2-console/**")
+            .antMatchers("metrics")
+            .antMatchers("health")
+            .antMatchers("info");
     }
 
     @Override
@@ -67,7 +70,7 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
             .antMatchers("/autoconfig/**").permitAll()
             .antMatchers("/env/**").permitAll()
             .antMatchers("/mappings/**").permitAll()
-            .antMatchers("/liquibase/**").permitAll()
+//            .antMatchers("/liquibase/**").permitAll()
             .antMatchers("/v2/api-docs/**").permitAll()
             .antMatchers("/configuration/security").permitAll()
             .antMatchers("/configuration/ui").permitAll()

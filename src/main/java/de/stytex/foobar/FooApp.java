@@ -1,5 +1,6 @@
 package de.stytex.foobar;
 
+import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import de.stytex.foobar.config.Constants;
 import de.stytex.foobar.config.JHipsterProperties;
 import java.net.InetAddress;
@@ -11,23 +12,21 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.MetricFilterAutoConfiguration;
-import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.netflix.hystrix.HystrixAutoConfiguration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
+import org.springframework.retry.annotation.EnableRetry;
 
-//@SpringBootApplication(exclude = {HystrixAutoConfiguration.class})
-//@EnableRetry
-@ComponentScan
-//@EnableMetrics
-@EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
-//@EnableConfigurationProperties({LiquibaseProperties.class})
-@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class})
+@SpringBootApplication(exclude = {HystrixAutoConfiguration.class})
+@EnableRetry
+//@ComponentScan
+//@EnableAutoConfiguration(exclude = {LiquibaseAutoConfiguration.class})
+@EnableMetrics
+@EnableConfigurationProperties({JHipsterProperties.class})
+//@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class})
 @EnableCircuitBreaker
 //@EnableEurekaClient
 public class FooApp {

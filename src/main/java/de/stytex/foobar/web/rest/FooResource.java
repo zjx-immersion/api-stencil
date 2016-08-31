@@ -2,21 +2,19 @@ package de.stytex.foobar.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import de.stytex.foobar.domain.Foo;
-import de.stytex.foobar.repository.FooRepository;
+import de.stytex.foobar.repository.FooMemeryRepository;
 import de.stytex.foobar.web.rest.util.HeaderUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import javax.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * REST controller for managing Foo.
@@ -26,10 +24,10 @@ import java.util.Optional;
 public class FooResource {
 
     private final Logger log = LoggerFactory.getLogger(FooResource.class);
-        
+
     @Inject
-    private FooRepository fooRepository;
-    
+    private FooMemeryRepository fooRepository;
+
     /**
      * POST  /foos : Create a new foo.
      *

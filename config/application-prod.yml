@@ -49,8 +49,8 @@ spring:
     thymeleaf:
         cache: true
 
-liquibase:
-    contexts: prod
+#liquibase:
+#    contexts: prod
 
 server:
     port: 8081
