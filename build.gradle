@@ -1,3 +1,7 @@
+println project.group + ":" + rootProject.name + ":" + project.version
+
+defaultTasks 'clean', 'build'
+
 buildscript {
     repositories {
         mavenLocal()
@@ -22,16 +26,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
-apply plugin: 'war'
 apply plugin: 'propdeps'
 defaultTasks 'bootRun'
 
 bootRepackage {
     mainClass = 'de.stytex.foobar.FooApp'
-}
-
-war {
-    rootSpec.exclude("**/tomcat-*.jar")
 }
 
 springBoot {
@@ -190,7 +189,7 @@ clean {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+    gradleVersion = '2.14'
 }
 
 task stage(dependsOn: 'bootRepackage') {
