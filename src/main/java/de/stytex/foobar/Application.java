@@ -29,9 +29,9 @@ import org.springframework.retry.annotation.EnableRetry;
 //@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class})
 @EnableCircuitBreaker
 //@EnableEurekaClient
-public class FooApp {
+public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(FooApp.class);
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     @Inject
     private Environment env;
@@ -68,7 +68,7 @@ public class FooApp {
      * @throws UnknownHostException if the local host name could not be resolved into an address
      */
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(FooApp.class);
+        SpringApplication app = new SpringApplication(Application.class);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
         addDefaultProfile(app, source);
         Environment env = app.run(args).getEnvironment();

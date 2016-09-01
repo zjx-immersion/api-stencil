@@ -2,7 +2,19 @@ println project.group + ":" + rootProject.name + ":" + project.version
 
 defaultTasks 'clean', 'build'
 
+
+
 buildscript {
+    ext {
+        projectName = rootProject.name
+        projectVersion = project.version
+        buildNumber = System.getenv("BUILD_NUMBER") ?: "local"
+        buildUrl = System.getenv("BUILD_URL") ?: "http://local-build"
+        timestamp = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        buildDir = relativePath("./build")
+        jobName = System.getenv("JOB_NAME") ?: name
+    }
+
     repositories {
         mavenLocal()
         jcenter()
@@ -20,21 +32,19 @@ buildscript {
     }
 }
 
+
 apply plugin: 'idea'
-apply plugin: 'java'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+
 apply plugin: 'maven'
 apply plugin: 'spring-boot'
 apply plugin: 'propdeps'
-defaultTasks 'bootRun'
 
 bootRepackage {
-    mainClass = 'de.stytex.foobar.FooApp'
+    mainClass = 'de.stytex.foobar.Application'
 }
 
 springBoot {
-    mainClass = 'de.stytex.foobar.FooApp'
+    mainClass = 'de.stytex.foobar.Application'
     executable = true
 }
 
@@ -68,6 +78,7 @@ task testReport(type: TestReport) {
 cucumberTest.finalizedBy(testReport)
 
 apply from: 'gradle/sonar.gradle'
+apply from: file('gradle/java.gradle')
 
 //apply from: 'gradle/liquibase.gradle'
 

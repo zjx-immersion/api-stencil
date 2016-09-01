@@ -1,6 +1,6 @@
 package de.stytex.foobar.web.rest;
 
-import de.stytex.foobar.FooApp;
+import de.stytex.foobar.Application;
 import de.stytex.foobar.domain.Foo;
 import de.stytex.foobar.repository.FooMemeryRepository;
 import java.util.List;
@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -35,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see FooResource
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = FooApp.class)
+@SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
 public class FooResourceIntTest {

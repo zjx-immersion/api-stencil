@@ -1,6 +1,6 @@
 package de.stytex.foobar.web.rest;
 
-import de.stytex.foobar.FooApp;
+import de.stytex.foobar.Application;
 import de.stytex.foobar.client.BarClient;
 import de.stytex.foobar.domain.Bar;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = FooApp.class)
+@SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest
 public class BarClientTest {

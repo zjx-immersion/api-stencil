@@ -17,7 +17,7 @@ public class ApplicationWebXml extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.profiles(addDefaultProfile())
-            .sources(FooApp.class);
+            .sources(Application.class);
     }
 
     /**
