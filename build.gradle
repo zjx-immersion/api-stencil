@@ -2,8 +2,6 @@ println project.group + ":" + rootProject.name + ":" + project.version
 
 defaultTasks 'clean', 'build'
 
-
-
 buildscript {
     ext {
         projectName = rootProject.name
@@ -79,9 +77,6 @@ cucumberTest.finalizedBy(testReport)
 
 apply from: 'gradle/sonar.gradle'
 apply from: file('gradle/java.gradle')
-
-//apply from: 'gradle/liquibase.gradle'
-
 apply from: 'gradle/mapstruct.gradle'
 apply from: 'gradle/docker.gradle'
 //jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
@@ -92,12 +87,8 @@ if (project.hasProperty('prod')) {
     apply from: 'gradle/profile_dev.gradle'
 }
 
-group = 'de.stytex.foobar'
-version = '0.0.1-SNAPSHOT'
-
-description = ''
-
 configurations {
+    all*.exclude group: "org.mockito", module: "mockito-all"
     providedRuntime
 }
 
