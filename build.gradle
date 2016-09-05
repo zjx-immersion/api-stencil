@@ -79,6 +79,7 @@ apply from: file('gradle/sonar.gradle')
 apply from: file('gradle/java.gradle')
 apply from: file('gradle/mapstruct.gradle')
 apply from: file('gradle/docker.gradle')
+apply from: file('gradle/check-style.gradle')
 //jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
 
 //if (project.hasProperty('prod')) {
