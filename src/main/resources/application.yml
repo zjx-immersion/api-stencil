@@ -11,6 +11,16 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+
+server:
+  context-path: /api-stencil
+
+info:
+  version: ${application.version}
+
+logging:
+  file: logs/service.log
+
 eureka:
     instance:
         appname: api-stencil
@@ -81,5 +91,3 @@ endpoints:
   actuator:
     enabled: true
 
-server:
-  context-path: /api-stencil

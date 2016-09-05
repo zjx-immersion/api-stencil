@@ -1,8 +1,5 @@
 apply plugin: 'spring-boot'
 
-ext {
-    logbackLoglevel = "DEBUG"
-}
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
@@ -31,12 +28,3 @@ task setProdProperties(dependsOn: bootRun) << {
     }
 }
 
-processResources {
-    filesMatching('**/logback-spring.xml') {
-        filter {
-            it.replace('@logback.loglevel@', logbackLoglevel)
-        }
-    }
-}
-
-setProdProperties.dependsOn 'gulp_ngconstant:dev'

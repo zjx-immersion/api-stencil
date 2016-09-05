@@ -1,5 +1,5 @@
 # ===================================================================
-# Spring Boot configuration for the "prod" profile.
+# Spring Boot configuration for the "dev" profile.
 #
 # This configuration overrides the application.yml file.
 # ===================================================================
@@ -22,54 +22,52 @@
 #        serviceUrl:
 #            defaultZone: http://localhost:8761/eureka/
 
-
-info:
-    env: PROD
-
 spring:
     devtools:
         restart:
-            enabled: false
+            enabled: true
         livereload:
-            enabled: false
-    datasource:
-        url: jdbc:postgresql://localhost:5432/foo
-        name:
-        username: foo
-        password:
-    jpa:
-        database-platform: de.stytex.foobar.domain.util.FixedPostgreSQL82Dialect
-        database: POSTGRESQL
-        show_sql: false
-        properties:
-            hibernate.cache.use_second_level_cache: false
-            hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: false
-    mail:
-        host: localhost
-        port: 25
-        username:
-        password:
-    thymeleaf:
-        cache: true
-
-#liquibase:
-#    contexts: prod
+            enabled: false # we use gulp + BrowserSync for livereload
 
 server:
     port: 8081
-    compression:
-        enabled: true
-        mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+
+info:
+    env: LOCAL
+
+logging:
+    config: config/logback-local.xml
+#    datasource:
+#        url: jdbc:h2:file:./target/h2db/db/foo;DB_CLOSE_DELAY=-1
+#        name:
+#        username: foo
+#        password:
+#    h2:
+#        console:
+#            enabled: false
+#    jpa:
+#        database-platform: de.stytex.foobar.domain.util.FixedH2Dialect
+#        database: H2
+#        show_sql: true
+#        properties:
+#            hibernate.cache.use_second_level_cache: false
+#            hibernate.cache.use_query_cache: false
+#            hibernate.generate_statistics: true
+    mail:
+        host: localhost
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+#liquibase:
+#    contexts: dev\
 
 # ===================================================================
 # JHipster specific properties
 # ===================================================================
 
 jhipster:
-    http:
-        cache: # Used by the CachingHttpHeadersFilter
-            timeToLiveInDays: 1461
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: foo@localhost
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
@@ -83,12 +81,12 @@ jhipster:
             host: localhost
             port: 2003
             prefix: foo
-        logs: # report metrics in the logs
-            enabled: false
-            reportFrequency: 60 # in seconds
-    logging:
-        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
-            enabled: false
-            host: localhost
-            port: 5000
-            queueSize: 512
+#        logs: # report metrics in the logs
+#            enabled: false
+#            reportFrequency: 60 # in seconds
+#    logging:
+#        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+#            enabled: false
+#            host: localhost
+#            port: 5000
+#            queueSize: 512

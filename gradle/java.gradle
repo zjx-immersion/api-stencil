@@ -17,7 +17,30 @@ compileTestJava {
 }
 
 processResources {
-    filesMatching('application.properties') {
-        expand(project.properties)
-    }
+//    filesMatching('application.properties') {
+//        expand(project.properties)
+//    }
+    expand project.properties
+    exclude 'logback-base.xml'
+    exclude '*.yml'
+    exclude 'META-INF/**'
+    exclude 'static/**'
+    exclude '.h2.server.properties'
+    exclude 'banner.txt'
+    exclude 'templates/**'
 }
+
+task copyOtherResources(type: Copy) {
+    from 'src/main/resources'
+    into "${buildDir}/resources/main"
+    include 'logback-base.xml'
+    include '*.yml'
+    include 'META-INF/**'
+    include 'static/**'
+    include '.h2.server.properties'
+    include 'banner.txt'
+    include 'templates/**'
+
+}
+
+classes.dependsOn(copyOtherResources)
