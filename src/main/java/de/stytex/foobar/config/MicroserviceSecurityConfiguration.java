@@ -27,56 +27,71 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-            .antMatchers(HttpMethod.OPTIONS, "/**")
-            .antMatchers("/app/**/*.{js,html}")
-            .antMatchers("/bower_components/**")
-            .antMatchers("/i18n/**")
-            .antMatchers("/content/**")
-            .antMatchers("/swagger-ui/index.html")
-            .antMatchers("/test/**")
-            .antMatchers("/api/*") //for testing purposes
-            .antMatchers("/h2-console/**")
-            .antMatchers("metrics")
-            .antMatchers("health")
-            .antMatchers("info");
+//        web.ignoring()
+//            .antMatchers(HttpMethod.OPTIONS, "/**")
+//            .antMatchers("/app/**/*.{js,html}")
+//            .antMatchers("/bower_components/**")
+//            .antMatchers("/i18n/**")
+//            .antMatchers("/content/**")
+//            .antMatchers("/swagger-ui/index.html")
+//            .antMatchers("/test/**")
+//            .antMatchers("/api/*") //for testing purposes
+//            .antMatchers("/h2-console/**")
+//            .antMatchers("metrics")
+//            .antMatchers("health")
+//            .antMatchers("info");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        // @formatter:off
+
         http
-            .csrf()
-            .disable()
-            .headers()
-            .frameOptions()
-            .disable()
-        .and()
+            .csrf().disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
-            .authorizeRequests()
+            .and().authorizeRequests()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin();
 
-            .antMatchers("/api/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
-            //.antMatchers("/api/**").authenticated()
-            .antMatchers("/api/**").permitAll()         //for testing
-            .antMatchers("/metrics/**").permitAll()
-            .antMatchers("/health/**").permitAll()
-            .antMatchers("/trace/**").permitAll()
-            .antMatchers("/dump/**").permitAll()
-            .antMatchers("/shutdown/**").permitAll()
-            .antMatchers("/beans/**").permitAll()
-            .antMatchers("/configprops/**").permitAll()
-            .antMatchers("/info/**").permitAll()
-            .antMatchers("/autoconfig/**").permitAll()
-            .antMatchers("/env/**").permitAll()
-            .antMatchers("/mappings/**").permitAll()
-//            .antMatchers("/liquibase/**").permitAll()
-            .antMatchers("/v2/api-docs/**").permitAll()
-            .antMatchers("/configuration/security").permitAll()
-            .antMatchers("/configuration/ui").permitAll()
-            .antMatchers("/protected/**").authenticated()
-        .and()
-            .apply(securityConfigurerAdapter());
+        // @formatter:on
+
+//        http
+//            .csrf()
+//            .disable()
+//            .headers()
+//            .frameOptions()
+//            .disable()
+//        .and()
+//            .sessionManagement()
+//            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//        .and().httpBasic()
+//        .and()
+//            .authorizeRequests()
+//            .antMatchers("/api/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
+//            .antMatchers("/api/**").authenticated()
+//            .antMatchers("/api/**").permitAll()         //for testing
+//            .antMatchers("/metrics/**").permitAll()
+//            .antMatchers("/health/**").permitAll()
+//            .antMatchers("/trace/**").permitAll()
+//            .antMatchers("/dump/**").permitAll()
+//            .antMatchers("/shutdown/**").permitAll()
+//            .antMatchers("/beans/**").permitAll()
+//            .antMatchers("/configprops/**").permitAll()
+//            .antMatchers("/info/**").permitAll()
+//            .antMatchers("/autoconfig/**").permitAll()
+//            .antMatchers("/env/**").permitAll()
+//            .antMatchers("/mappings/**").permitAll()
+////            .antMatchers("/liquibase/**").permitAll()
+//            .antMatchers("/v2/api-docs/**").permitAll()
+//            .antMatchers("/configuration/security").permitAll()
+//            .antMatchers("/configuration/ui").permitAll()
+//            .antMatchers("/protected/**").authenticated()
+//            .and().formLogin();
+//        .and()
+//            .apply(securityConfigurerAdapter());
 
     }
 

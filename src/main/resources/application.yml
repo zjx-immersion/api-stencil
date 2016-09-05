@@ -21,19 +21,9 @@ info:
 logging:
   file: logs/service.log
 
-eureka:
-    instance:
-        appname: api-stencil
-        instanceId: api-stencil:${spring.application.instance_id:${random.value}}
-
-ribbon:
-    eureka:
-        enabled: true
-
-
 spring:
     application:
-        name: api-stencil
+        name: ${application.id}
     jpa:
         open-in-view: false
         hibernate:
@@ -47,10 +37,21 @@ spring:
     thymeleaf:
         mode: XHTML
 
+#endpoints:
+#  actuator:
+#    enabled: true
+
+management:
+#    context-path: /actuators
+    security:
+        enabled: false
 
 security:
-    basic:
-        enabled: false
+    ignored: /api/**, /hystrix.stream, /docs/**, /api/api-doc/**, /v2/api-docs/**, /index.html, /webjars/**, swagger-resources/**, /images/**, configurations/**
+    user:
+        name: support
+        password: 64fd7f42-732b-11e6-8b77-86f30ca893d3
+
 
 # ===================================================================
 # JHipster specific properties
@@ -70,12 +71,12 @@ jhipster:
         #max-age: 1800
     mail:
         from: api-stencil@localhost
-    security:
-        authentication:
-            jwt:
-                secret: fb60e0ee5728e5ebddafe2e3b5ee52a742f333ef
-                # Token is valid 24 hours
-                tokenValidityInSeconds: 86400
+#    security:
+#        authentication:
+#            jwt:
+#                secret: fb60e0ee5728e5ebddafe2e3b5ee52a742f333ef
+#                # Token is valid 24 hours
+#                tokenValidityInSeconds: 86400
     swagger:
         title: api-stencil API
         description: foo API documentation
@@ -87,7 +88,15 @@ jhipster:
         license:
         licenseUrl:
 
-endpoints:
-  actuator:
-    enabled: true
+eureka:
+    instance:
+        appname: api-stencil
+        instanceId: api-stencil:${spring.application.instance_id:${random.value}}
+
+ribbon:
+    eureka:
+        enabled: true
+
+
+
 
