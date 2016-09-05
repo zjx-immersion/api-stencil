@@ -16,6 +16,10 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Aspect for logging execution of service and repository Spring components.
  */
 @Aspect

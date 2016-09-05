@@ -15,6 +15,13 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 @Configuration
 @EnableAsync
 @EnableScheduling

@@ -120,10 +120,10 @@
         <property name="format" value="File \| Settings \| File Templates"/>
     </module>
     <module name="RegexpSingleline">
-        <property name="format" value="Created with IntelliJ IDEA"/>
-    </module>
-    <module name="RegexpSingleline">
-        <property name="format" value="^\s*\*\s*@author"/>
+        <property name="severity" value="ignore" />
+        <property name="format" value="\s+$" />
+        <property name="message" value="Line has trailing spaces." />
+        <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit" />
     </module>
 
     <!-- allows suppressing using the //CHECKSTYLE:ON //CHECKSTYLE:OFF -->

@@ -15,6 +15,10 @@ import org.springframework.web.filter.GenericFilterBean;
 import io.jsonwebtoken.ExpiredJwtException;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Filters incoming requests and installs a Spring Security principal if a header corresponding to a valid user is
  * found.
  */

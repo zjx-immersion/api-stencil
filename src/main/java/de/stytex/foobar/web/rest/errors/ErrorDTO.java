@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * DTO for transfering error message with a list of field errors.
  */
 public class ErrorDTO implements Serializable {

@@ -22,6 +22,10 @@ import javax.inject.Inject;
 import javax.servlet.*;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Configuration of web application with Servlet 3.0 APIs.
  */
 @Configuration

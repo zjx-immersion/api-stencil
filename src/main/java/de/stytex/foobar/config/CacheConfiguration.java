@@ -10,6 +10,13 @@ import org.springframework.cache.support.NoOpCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 @Configuration
 @EnableCaching
 @AutoConfigureAfter(value = { MetricsConfiguration.class})

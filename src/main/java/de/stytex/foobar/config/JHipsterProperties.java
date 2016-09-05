@@ -1,15 +1,18 @@
 package de.stytex.foobar.config;
 
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
 
 
 /**
- * Properties specific to JHipster.
+ * Created by on 01.09.16.
  *
+ * @author Jianxin Zhong
+ *
+ * Properties specific to JHipster.
  * <p>
- *     Properties are configured in the application.yml file.
+ * <p>
+ * Properties are configured in the application.yml file.
  * </p>
  */
 @ConfigurationProperties(prefix = "jhipster", ignoreUnknownFields = false)
@@ -63,7 +66,7 @@ public class JHipsterProperties {
         return cors;
     }
 
-    public static class Async {
+    public class Async {
 
         private int corePoolSize = 2;
 
@@ -329,7 +332,7 @@ public class JHipsterProperties {
 
         public static class Spark {
 
-            private boolean enabled = false;
+            private Boolean enabled = false;
 
             private String host = "localhost";
 
@@ -362,7 +365,7 @@ public class JHipsterProperties {
 
         public static class Graphite {
 
-            private boolean enabled = false;
+            private Boolean enabled = false;
 
             private String host = "localhost";
 
@@ -403,9 +406,9 @@ public class JHipsterProperties {
             }
         }
 
-        public static  class Logs {
+        public static class Logs {
 
-            private boolean enabled = false;
+            private Boolean enabled = false;
 
             private long reportFrequency = 60;
 
@@ -429,17 +432,21 @@ public class JHipsterProperties {
 
     private final Logging logging = new Logging();
 
-    public Logging getLogging() { return logging; }
+    public Logging getLogging() {
+        return logging;
+    }
 
     public static class Logging {
 
         private final Logstash logstash = new Logstash();
 
-        public Logstash getLogstash() { return logstash; }
+        public Logstash getLogstash() {
+            return logstash;
+        }
 
         public static class Logstash {
 
-            private boolean enabled = false;
+            private Boolean enabled = false;
 
             private String host = "localhost";
 
@@ -447,21 +454,37 @@ public class JHipsterProperties {
 
             private int queueSize = 512;
 
-            public boolean isEnabled() { return enabled; }
+            public boolean isEnabled() {
+                return enabled;
+            }
 
-            public void setEnabled(boolean enabled) { this.enabled = enabled; }
+            public void setEnabled(boolean enabled) {
+                this.enabled = enabled;
+            }
 
-            public String getHost() { return host; }
+            public String getHost() {
+                return host;
+            }
 
-            public void setHost(String host) { this.host = host; }
+            public void setHost(String host) {
+                this.host = host;
+            }
 
-            public int getPort() { return port; }
+            public int getPort() {
+                return port;
+            }
 
-            public void setPort(int port) { this.port = port; }
+            public void setPort(int port) {
+                this.port = port;
+            }
 
-            public int getQueueSize() { return queueSize; }
+            public int getQueueSize() {
+                return queueSize;
+            }
 
-            public void setQueueSize(int queueSize) { this.queueSize = queueSize; }
+            public void setQueueSize(int queueSize) {
+                this.queueSize = queueSize;
+            }
         }
     }
 

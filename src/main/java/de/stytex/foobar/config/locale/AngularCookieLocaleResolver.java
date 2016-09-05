@@ -10,12 +10,15 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.servlet.http.*;
-
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Angular cookie saved the locale with a double quote (%22en%22).
  * So the default CookieLocaleResolver#StringUtils.parseLocaleString(localePart)
  * is not able to parse the locale.
- *
+ * <p>
  * This class will check if a double quote has been added, if so it will remove it.
  */
 public class AngularCookieLocaleResolver extends CookieLocaleResolver {
@@ -68,20 +71,20 @@ public class AngularCookieLocaleResolver extends CookieLocaleResolver {
                     localePart = value.substring(0, spaceIndex);
                     timeZonePart = value.substring(spaceIndex + 1);
                 }
-                locale = (!"-".equals(localePart) ? StringUtils.parseLocaleString(localePart.replace('-', '_')) : null);
+                locale = "-".equals(localePart) ? null : StringUtils.parseLocaleString(localePart.replace('-', '_'));
                 if (timeZonePart != null) {
                     timeZone = StringUtils.parseTimeZoneString(timeZonePart);
                 }
                 if (logger.isTraceEnabled()) {
-                    logger.trace("Parsed cookie value [" + cookie.getValue() + "] into locale '" + locale +
-                        "'" + (timeZone != null ? " and time zone '" + timeZone.getID() + "'" : ""));
+                    logger.trace("Parsed cookie value [" + cookie.getValue() + "] into locale '" + locale
+                            + "'" + (timeZone != null ? " and time zone '" + timeZone.getID() + "'" : ""));
                 }
             }
             request.setAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME,
-                (locale != null ? locale: determineDefaultLocale(request)));
+                    null != locale ? locale : determineDefaultLocale(request));
 
             request.setAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME,
-                (timeZone != null ? timeZone : determineDefaultTimeZone(request)));
+                    timeZone != null ? timeZone : determineDefaultTimeZone(request));
         }
     }
 }

@@ -6,9 +6,10 @@ import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by on 27.03.16.
+ * Created by on 01.09.16.
  *
- * @author David Steiman
+ * @author Jianxin Zhong
+ *
  */
 @Configuration
 public class RestTemplateConfiguration {

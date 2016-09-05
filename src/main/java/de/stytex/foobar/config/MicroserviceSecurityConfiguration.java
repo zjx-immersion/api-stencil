@@ -4,18 +4,22 @@ import javax.inject.Inject;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 
-import de.stytex.foobar.security.AuthoritiesConstants;
 import de.stytex.foobar.security.jwt.JWTConfigurer;
 import de.stytex.foobar.security.jwt.TokenProvider;
+
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
 
 @Configuration
 @EnableWebSecurity

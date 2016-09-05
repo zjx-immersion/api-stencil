@@ -11,6 +11,13 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 @Configuration
 public class LoggingConfiguration {
 
@@ -42,9 +49,9 @@ public class LoggingConfiguration {
         LogstashSocketAppender logstashAppender = new LogstashSocketAppender();
         logstashAppender.setName("LOGSTASH");
         logstashAppender.setContext(context);
-        String customFields = "{\"app_name\":\"" + appName + "\",\"app_port\":\"" + serverPort + "\"," +
-            "\"instance_id\":\"" + instanceId + "\"}";
-        
+        String customFields = "{\"app_name\":\"" + appName + "\",\"app_port\":\"" + serverPort + "\","
+                + "\"instance_id\":\"" + instanceId + "\"}";
+
         // Set the Logstash appender config from JHipster properties
         logstashAppender.setSyslogHost(jHipsterProperties.getLogging().getLogstash().getHost());
         logstashAppender.setPort(jHipsterProperties.getLogging().getLogstash().getPort());

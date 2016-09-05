@@ -15,7 +15,7 @@ public class CachingHttpHeadersFilter implements Filter {
     // We consider the last modified date is the start up time of the server
     private final static long LAST_MODIFIED = System.currentTimeMillis();
 
-    private long CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(1461L);
+    private long cache_time_to_live = TimeUnit.DAYS.toMillis(1461L);
 
     private JHipsterProperties jHipsterProperties;;
 
@@ -25,7 +25,7 @@ public class CachingHttpHeadersFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        CACHE_TIME_TO_LIVE = TimeUnit.DAYS.toMillis(jHipsterProperties.getHttp().getCache().getTimeToLiveInDays());
+        cache_time_to_live = TimeUnit.DAYS.toMillis(jHipsterProperties.getHttp().getCache().getTimeToLiveInDays());
     }
 
     @Override
@@ -39,11 +39,11 @@ public class CachingHttpHeadersFilter implements Filter {
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        httpResponse.setHeader("Cache-Control", "max-age=" + CACHE_TIME_TO_LIVE + ", public");
+        httpResponse.setHeader("Cache-Control", "max-age=" + cache_time_to_live + ", public");
         httpResponse.setHeader("Pragma", "cache");
 
         // Setting Expires header, for proxy caching
-        httpResponse.setDateHeader("Expires", CACHE_TIME_TO_LIVE + System.currentTimeMillis());
+        httpResponse.setDateHeader("Expires", cache_time_to_live + System.currentTimeMillis());
 
         // Setting the Last-Modified header, for browser caching
         httpResponse.setDateHeader("Last-Modified", LAST_MODIFIED);

@@ -3,6 +3,13 @@ package de.stytex.foobar.web.rest.dto;
 import ch.qos.logback.classic.Logger;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 public class LoggerDTO {
 
     private String name;
@@ -36,9 +43,11 @@ public class LoggerDTO {
 
     @Override
     public String toString() {
-        return "LoggerDTO{" +
-            "name='" + name + '\'' +
-            ", level='" + level + '\'' +
-            '}';
+        return "LoggerDTO{"
+                + "name='"
+                + name
+                + '\''
+                + ", level='" + level + '\''
+                + '}';
     }
 }

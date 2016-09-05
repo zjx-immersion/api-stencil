@@ -3,6 +3,10 @@ package de.stytex.foobar.web.rest.errors;
 import java.io.Serializable;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * DTO for sending a parameterized error message.
  */
 public class ParameterizedErrorDTO implements Serializable {

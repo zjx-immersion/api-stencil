@@ -15,8 +15,13 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Controller advice to translate the server side exceptions to client-friendly json structures.
  */
+
 @ControllerAdvice
 public class ExceptionTranslator {
 

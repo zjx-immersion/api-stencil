@@ -17,7 +17,7 @@ import java.util.Collection;
 /**
  * Created by on 27.03.16.
  *
- * @author David Steiman
+ * @author Jianxin Zhong
  */
 @Component
 public class BarClient extends AbstractMicroserviceClient<Bar> {
@@ -46,10 +46,10 @@ public class BarClient extends AbstractMicroserviceClient<Bar> {
     @Override
 
     @HystrixCommand(
-        fallbackMethod = "getBarCache",
-        commandProperties = {
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")
-        }
+            fallbackMethod = "getBarCache",
+            commandProperties = {
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")
+            }
     )
     public Collection<Bar> findAll() {
         barCache = Arrays.asList(restTemplate.getForEntity(getUrl("bars"), Bar[].class).getBody());
@@ -58,13 +58,13 @@ public class BarClient extends AbstractMicroserviceClient<Bar> {
 
     @Override
     @HystrixCommand(
-        fallbackMethod = "getOneCache",
-        commandProperties = {
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")
-        }
+            fallbackMethod = "getOneCache",
+            commandProperties = {
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "2")
+            }
     )
     public Bar getOne(long id) {
-        return restTemplate.getForObject(getUrl("bars", id),Bar.class);
+        return restTemplate.getForObject(getUrl("bars", id), Bar.class);
     }
 
     public Bar getOneCache(long id) {
@@ -82,7 +82,8 @@ public class BarClient extends AbstractMicroserviceClient<Bar> {
     @Override
     public Bar update(Bar object) throws IOException {
         HttpEntity<String> entity = getJsonEntity(object);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(getUrl("bars"), HttpMethod.PUT, entity, String.class);
+        ResponseEntity<String> responseEntity =
+                restTemplate.exchange(getUrl("bars"), HttpMethod.PUT, entity, String.class);
 
         return mapper.readValue(responseEntity.getBody(), Bar.class);
     }

@@ -5,6 +5,13 @@ import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 public final class JSR310DateConverters {
 
     private JSR310DateConverters() {}

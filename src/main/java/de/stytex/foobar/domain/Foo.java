@@ -25,7 +25,7 @@ public class Foo implements Serializable {
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-//    @Column(name = "value")
+    //    @Column(name = "value")
     private String value;
 
     public Long getId() {
@@ -53,7 +53,7 @@ public class Foo implements Serializable {
             return false;
         }
         Foo foo = (Foo) o;
-        if(foo.id == null || id == null) {
+        if (foo.id == null || id == null) {
             return false;
         }
         return Objects.equals(id, foo.id);
@@ -66,9 +66,10 @@ public class Foo implements Serializable {
 
     @Override
     public String toString() {
-        return "Foo{" +
-            "id=" + id +
-            ", value='" + value + "'" +
-            '}';
+        return "Foo{"
+                + "id="
+                + id
+                + ", value='" + value + "'"
+                + '}';
     }
 }

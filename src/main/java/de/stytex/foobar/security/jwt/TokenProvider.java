@@ -17,6 +17,13 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.*;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 @Component
 public class TokenProvider {
 

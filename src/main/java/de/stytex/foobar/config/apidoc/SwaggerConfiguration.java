@@ -1,12 +1,10 @@
 package de.stytex.foobar.config.apidoc;
 
-import de.stytex.foobar.config.Constants;
 import de.stytex.foobar.config.JHipsterProperties;
 
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +18,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Springfox Swagger configuration.
  *
  * Warning! When having a lot of REST endpoints, Springfox can become a performance issue. In that

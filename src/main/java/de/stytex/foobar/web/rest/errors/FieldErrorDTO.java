@@ -2,6 +2,13 @@ package de.stytex.foobar.web.rest.errors;
 
 import java.io.Serializable;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 public class FieldErrorDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

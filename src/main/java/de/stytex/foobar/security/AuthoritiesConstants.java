@@ -1,6 +1,10 @@
 package de.stytex.foobar.security;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Constants for Spring Security authorities.
  */
 public final class AuthoritiesConstants {

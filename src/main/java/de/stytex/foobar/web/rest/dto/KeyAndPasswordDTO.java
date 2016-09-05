@@ -1,5 +1,12 @@
 package de.stytex.foobar.web.rest.dto;
 
+/**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ */
+
 public class KeyAndPasswordDTO {
 
     private String key;

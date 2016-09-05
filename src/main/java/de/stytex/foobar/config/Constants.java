@@ -1,6 +1,10 @@
 package de.stytex.foobar.config;
 
 /**
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
  * Application constants.
  */
 public final class Constants {

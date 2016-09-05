@@ -7,9 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
+
 /**
- * This is a helper Java class that provides an alternative to creating a web.xml.
+ * Created by on 01.09.16.
+ *
+ * @author Jianxin Zhong
+ *
+ * his is a helper Java class that provides an alternative to creating a web.xml.
  */
+
 public class ApplicationWebXml extends SpringBootServletInitializer {
 
     private final Logger log = LoggerFactory.getLogger(ApplicationWebXml.class);
