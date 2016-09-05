@@ -48,13 +48,11 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
         // @formatter:off
 
         http
-            .csrf().disable()
-            .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and().authorizeRequests()
-            .anyRequest().authenticated()
-            .and()
-            .formLogin();
+                .csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
 
         // @formatter:on
 

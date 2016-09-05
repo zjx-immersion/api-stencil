@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,7 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class FooMemeryRepository {
 
-    private static List<Foo> fooStore = new ArrayList();
+    private  List<Foo> fooStore;
+
+    public FooMemeryRepository() {
+        fooStore = new ArrayList();
+    }
 
     public Foo save(Foo foo) {
         Foo foo1 = new Foo(new Long(new Random(123).nextLong()), foo.getValue());
@@ -22,7 +27,7 @@ public class FooMemeryRepository {
     }
 
     public List<Foo> findAll() {
-        return fooStore;
+        return fooStore.stream().collect(Collectors.toList());
     }
 
     public Foo findOne(Long id) {

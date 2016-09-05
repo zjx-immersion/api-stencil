@@ -42,7 +42,9 @@ public class FooResource {
     public ResponseEntity<Foo> createFoo(@RequestBody Foo foo) throws URISyntaxException {
         log.debug("REST request to save Foo : {}", foo);
         if (foo.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("foo", "idexists", "A new foo cannot already have an ID")).body(null);
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("foo", "idexists", "A new foo cannot already have an ID"))
+                    .body(null);
         }
         Foo result = fooRepository.save(foo);
         return ResponseEntity.created(new URI("/api/foos/" + result.getId()))
