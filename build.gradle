@@ -38,11 +38,11 @@ apply plugin: 'spring-boot'
 apply plugin: 'propdeps'
 
 bootRepackage {
-    mainClass = 'de.stytex.foobar.Application'
+    mainClass = 'Application'
 }
 
 springBoot {
-    mainClass = 'de.stytex.foobar.Application'
+    mainClass = 'Application'
     executable = true
 }
 
