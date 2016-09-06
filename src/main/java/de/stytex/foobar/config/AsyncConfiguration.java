@@ -2,10 +2,12 @@ package de.stytex.foobar.config;
 
 import de.stytex.foobar.async.ExceptionHandlingAsyncTaskExecutor;
 
+import de.stytex.foobar.config.properties.AsyncProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.*;
@@ -25,21 +27,22 @@ import javax.inject.Inject;
 @Configuration
 @EnableAsync
 @EnableScheduling
+@EnableConfigurationProperties(AsyncProperties.class)
 public class AsyncConfiguration implements AsyncConfigurer {
 
     private final Logger log = LoggerFactory.getLogger(AsyncConfiguration.class);
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private AsyncProperties asyncProperties;
 
     @Override
     @Bean(name = "taskExecutor")
     public Executor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
-        executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
-        executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
+        executor.setCorePoolSize(asyncProperties.getCorePoolSize());
+        executor.setMaxPoolSize(asyncProperties.getMaxPoolSize());
+        executor.setQueueCapacity(asyncProperties.getQueueCapacity());
         executor.setThreadNamePrefix("foo-Executor-");
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }

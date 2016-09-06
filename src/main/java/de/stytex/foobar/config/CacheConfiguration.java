@@ -4,6 +4,8 @@ import javax.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.support.NoOpCacheManager;
@@ -14,12 +16,13 @@ import org.springframework.context.annotation.Configuration;
  * Created by on 01.09.16.
  *
  * @author Jianxin Zhong
- *
  */
 
 @Configuration
 @EnableCaching
-@AutoConfigureAfter(value = { MetricsConfiguration.class})
+@AutoConfigureAfter(value = {MetricsConfiguration.class})
+@EnableConfigurationProperties(CacheProperties.class)
+//@AutoConfigureAfter(value = {MetricsConfiguration.class})
 //@AutoConfigureAfter(value = { MetricsConfiguration.class, DatabaseConfiguration.class })
 public class CacheConfiguration {
 

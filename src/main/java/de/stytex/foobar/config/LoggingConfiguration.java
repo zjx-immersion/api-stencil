@@ -2,14 +2,15 @@ package de.stytex.foobar.config;
 
 import ch.qos.logback.classic.AsyncAppender;
 import ch.qos.logback.classic.LoggerContext;
+import de.stytex.foobar.config.properties.LogStashProperties;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import net.logstash.logback.appender.LogstashSocketAppender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
 /**
  * Created by on 01.09.16.
@@ -19,6 +20,7 @@ import javax.inject.Inject;
  */
 
 @Configuration
+@EnableConfigurationProperties(LogStashProperties.class)
 public class LoggingConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(LoggingConfiguration.class);
@@ -34,11 +36,11 @@ public class LoggingConfiguration {
     @Value("${eureka.instance.instanceId}")
     private String instanceId;
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private LogStashProperties logStashProperties;
 
     @PostConstruct
     private void init() {
-        if (jHipsterProperties.getLogging().getLogstash().isEnabled()) {
+        if (logStashProperties.getLogstash().isEnabled()) {
             addLogstashAppender();
         }
     }
@@ -53,8 +55,8 @@ public class LoggingConfiguration {
                 + "\"instance_id\":\"" + instanceId + "\"}";
 
         // Set the Logstash appender config from JHipster properties
-        logstashAppender.setSyslogHost(jHipsterProperties.getLogging().getLogstash().getHost());
-        logstashAppender.setPort(jHipsterProperties.getLogging().getLogstash().getPort());
+        logstashAppender.setSyslogHost(logStashProperties.getLogstash().getHost());
+        logstashAppender.setPort(logStashProperties.getLogstash().getPort());
         logstashAppender.setCustomFields(customFields);
         logstashAppender.start();
 
@@ -62,7 +64,7 @@ public class LoggingConfiguration {
         AsyncAppender asyncLogstashAppender = new AsyncAppender();
         asyncLogstashAppender.setContext(context);
         asyncLogstashAppender.setName("ASYNC_LOGSTASH");
-        asyncLogstashAppender.setQueueSize(jHipsterProperties.getLogging().getLogstash().getQueueSize());
+        asyncLogstashAppender.setQueueSize(logStashProperties.getLogstash().getQueueSize());
         asyncLogstashAppender.addAppender(logstashAppender);
         asyncLogstashAppender.start();
 

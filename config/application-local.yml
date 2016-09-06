@@ -67,20 +67,20 @@ logging:
 # JHipster specific properties
 # ===================================================================
 
-jhipster:
-    mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: foo@localhost
-    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
-        jmx.enabled: true
-        spark:
-            enabled: false
-            host: localhost
-            port: 9999
-        graphite:
-            enabled: false
-            host: localhost
-            port: 2003
-            prefix: foo
+
+mail: # specific JHipster mail property, for standard properties see MailProperties
+    from: foo@localhost
+metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+    jmx.enabled: true
+    spark:
+        enabled: false
+        host: localhost
+        port: 9999
+    graphite:
+        enabled: false
+        host: localhost
+        port: 2003
+        prefix: foo
 #        logs: # report metrics in the logs
 #            enabled: false
 #            reportFrequency: 60 # in seconds

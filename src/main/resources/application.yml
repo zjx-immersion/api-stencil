@@ -57,36 +57,36 @@ security:
 # JHipster specific properties
 # ===================================================================
 
-jhipster:
-    async:
-        corePoolSize: 2
-        maxPoolSize: 50
-        queueCapacity: 10000
-    #cors: #By default CORS are not enabled. Uncomment to enable.
-        #allowed-origins: "*"
-        #allowed-methods: GET, PUT, POST, DELETE, OPTIONS
-        #allowed-headers: "*"
-        #exposed-headers:
-        #allow-credentials: true
-        #max-age: 1800
-    mail:
-        from: api-stencil@localhost
-#    security:
-#        authentication:
-#            jwt:
-#                secret: fb60e0ee5728e5ebddafe2e3b5ee52a742f333ef
-#                # Token is valid 24 hours
-#                tokenValidityInSeconds: 86400
-    swagger:
-        title: api-stencil API
-        description: foo API documentation
-        version: 0.0.1
-        termsOfServiceUrl:
-        contactName:
-        contactUrl:
-        contactEmail:
-        license:
-        licenseUrl:
+
+async:
+    corePoolSize: 2
+    maxPoolSize: 50
+    queueCapacity: 10000
+#cors: #By default CORS are not enabled. Uncomment to enable.
+    #allowed-origins: "*"
+    #allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+    #allowed-headers: "*"
+    #exposed-headers:
+    #allow-credentials: true
+    #max-age: 1800
+mail:
+    from: api-stencil@localhost
+# security:
+#     authentication:
+#         jwt:
+#             secret: fb60e0ee5728e5ebddafe2e3b5ee52a742f333ef
+#             # Token is valid 24 hours
+#             tokenValidityInSeconds: 86400
+swagger:
+    title: api-stencil API
+    description: foo API documentation
+    version: ${application.version}
+    termsOfServiceUrl:
+    contactName:
+    contactUrl:
+    contactEmail:
+    license:
+    licenseUrl:
 
 eureka:
     instance:

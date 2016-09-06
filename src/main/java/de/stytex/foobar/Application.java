@@ -2,7 +2,6 @@ package de.stytex.foobar;
 
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import de.stytex.foobar.config.Constants;
-import de.stytex.foobar.config.JHipsterProperties;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
@@ -13,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.hystrix.HystrixAutoConfiguration;
 import org.springframework.core.env.Environment;
@@ -32,7 +30,7 @@ import org.springframework.retry.annotation.EnableRetry;
 //@ComponentScan
 //@EnableAutoConfiguration(exclude = {LiquibaseAutoConfiguration.class})
 @EnableMetrics
-@EnableConfigurationProperties({JHipsterProperties.class})
+//@EnableConfigurationProperties({JHipsterProperties.class})
 //@EnableConfigurationProperties({JHipsterProperties.class, LiquibaseProperties.class})
 @EnableCircuitBreaker
 //@EnableEurekaClient

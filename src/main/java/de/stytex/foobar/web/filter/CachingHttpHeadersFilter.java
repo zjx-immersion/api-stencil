@@ -1,11 +1,10 @@
 package de.stytex.foobar.web.filter;
 
-import de.stytex.foobar.config.JHipsterProperties;
-
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
+import de.stytex.foobar.config.properties.HttpProperties;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * This filter is used in production, to put HTTP cache headers with a long (1 month) expiration time.
@@ -17,15 +16,15 @@ public class CachingHttpHeadersFilter implements Filter {
 
     private long cache_time_to_live = TimeUnit.DAYS.toMillis(1461L);
 
-    private JHipsterProperties jHipsterProperties;;
+    private HttpProperties httpProperties;;
 
-    public CachingHttpHeadersFilter(JHipsterProperties jHipsterProperties) {
-        this.jHipsterProperties = jHipsterProperties;
+    public CachingHttpHeadersFilter(HttpProperties httpProperties) {
+        this.httpProperties = httpProperties;
     }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        cache_time_to_live = TimeUnit.DAYS.toMillis(jHipsterProperties.getHttp().getCache().getTimeToLiveInDays());
+        cache_time_to_live = TimeUnit.DAYS.toMillis(httpProperties.getCache().getTimeToLiveInDays());
     }
 
     @Override

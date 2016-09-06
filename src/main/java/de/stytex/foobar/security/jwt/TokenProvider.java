@@ -1,21 +1,25 @@
 package de.stytex.foobar.security.jwt;
 
-import de.stytex.foobar.config.JHipsterProperties;
 
-import java.util.*;
+import de.stytex.foobar.config.properties.TokenSecurityProperties;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
-
-import io.jsonwebtoken.*;
 
 /**
  * Created by on 01.09.16.
@@ -25,6 +29,7 @@ import io.jsonwebtoken.*;
  */
 
 @Component
+@EnableConfigurationProperties(TokenSecurityProperties.class)
 public class TokenProvider {
 
     private final Logger log = LoggerFactory.getLogger(TokenProvider.class);
@@ -38,17 +43,17 @@ public class TokenProvider {
     private long tokenValidityInSecondsForRememberMe;
 
     @Inject
-    private JHipsterProperties jHipsterProperties;
+    private TokenSecurityProperties tokenSecurityProperties;
 
     @PostConstruct
     public void init() {
         this.secretKey =
-            jHipsterProperties.getSecurity().getAuthentication().getJwt().getSecret();
+            tokenSecurityProperties.getAuthentication().getJwt().getSecret();
 
         this.tokenValidityInSeconds =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds();
+            1000 * tokenSecurityProperties.getAuthentication().getJwt().getTokenValidityInSeconds();
         this.tokenValidityInSecondsForRememberMe =
-            1000 * jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
+            1000 * tokenSecurityProperties.getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe();
     }
 
     public String createToken(Authentication authentication, Boolean rememberMe) {
