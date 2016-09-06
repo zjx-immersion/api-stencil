@@ -27,9 +27,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import static com.api.foobar.config.constant.CommConstants.CLIENT_ID_FIELD_NAME;
-import static com.api.foobar.config.constant.CommConstants.CLIENT_VERSION_FIELD_NAME;
-import static com.api.foobar.config.constant.CommConstants.CORRELATION_ID_FIELD_NAME;
+import static com.api.foobar.config.constant.CommConstants.*;
 import static com.google.common.collect.Lists.newArrayList;
 import static springfox.documentation.builders.PathSelectors.regex;
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
@@ -54,7 +52,7 @@ public class SwaggerConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(SwaggerConfiguration.class);
 
-    public static final String DEFAULT_INCLUDE_PATTERN = "/api/.*";
+    public static final String DEFAULT_INCLUDE_PATTERN = REST_BASE_URL_PATTERN + "/.*";
 
     @Inject
     private TypeResolver typeResolver;
@@ -128,7 +126,7 @@ public class SwaggerConfiguration {
 
         Parameter correlationIdParameter = new ParameterBuilder()
                 .name(CORRELATION_ID_FIELD_NAME)
-                .description("")
+                .description("Correlation ID (30 chars max: alphanumeric and hyphen)")
                 .parameterType("header")
                 .modelRef(new ModelRef("string"))
                 .required(true)
@@ -136,7 +134,7 @@ public class SwaggerConfiguration {
 
         Parameter clientIdParameter = new ParameterBuilder()
                 .name(CLIENT_ID_FIELD_NAME)
-                .description("")
+                .description("Client ID (10 chars max: alphanumeric)")
                 .parameterType("header")
                 .modelRef(new ModelRef("string"))
                 .required(true)
@@ -144,7 +142,7 @@ public class SwaggerConfiguration {
 
         Parameter clientVersionParameter = new ParameterBuilder()
                 .name(CLIENT_VERSION_FIELD_NAME)
-                .description("")
+                .description("Client Version (10 chars max: alphanumeric, dot & hyphen)")
                 .parameterType("header")
                 .modelRef(new ModelRef("string"))
                 .required(true)
