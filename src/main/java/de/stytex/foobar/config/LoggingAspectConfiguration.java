@@ -1,6 +1,7 @@
 package de.stytex.foobar.config;
 
 import de.stytex.foobar.aop.logging.LoggingAspect;
+import de.stytex.foobar.config.constant.Constants;
 import org.springframework.context.annotation.*;
 
 /**

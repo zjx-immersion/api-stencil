@@ -1,4 +1,4 @@
-package de.stytex.foobar.config;
+package de.stytex.foobar.config.constant;
 
 /**
  * Created by on 01.09.16.

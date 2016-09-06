@@ -1,12 +1,13 @@
 package de.stytex.foobar.repository;
 
 import de.stytex.foobar.domain.Foo;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * Created by on 01.09.16.
@@ -21,7 +22,7 @@ public class FooMemeryRepository {
     private  List<Foo> fooStore;
 
     public FooMemeryRepository() {
-        fooStore = new ArrayList();
+        fooStore = newArrayList();
     }
 
     public Foo save(Foo foo) {

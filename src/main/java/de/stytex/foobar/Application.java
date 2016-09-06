@@ -1,7 +1,7 @@
 package de.stytex.foobar;
 
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
-import de.stytex.foobar.config.Constants;
+import de.stytex.foobar.config.constant.Constants;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;

@@ -169,6 +169,7 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: springfox_version
 
     compile group: 'com.h2database', name: 'h2'
+    compile group: 'joda-time', name: 'joda-time'
     compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: mapstruct_version
     testCompile group: 'com.jayway.awaitility', name: 'awaitility', version: awaility_version
     testCompile group: 'com.jayway.jsonpath', name: 'json-path'

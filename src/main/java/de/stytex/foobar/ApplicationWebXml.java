@@ -1,6 +1,6 @@
 package de.stytex.foobar;
 
-import de.stytex.foobar.config.Constants;
+import de.stytex.foobar.config.constant.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +40,6 @@ public class ApplicationWebXml extends SpringBootServletInitializer {
         }
 
         log.warn("No Spring profile configured, running with default configuration");
-        return Constants.SPRING_PROFILE_DEVELOPMENT;
+        return Constants.SPRING_PROFILE_LOCAL;
     }
 }

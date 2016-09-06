@@ -1,6 +1,6 @@
 package de.stytex.foobar.aop.logging;
 
-import de.stytex.foobar.config.Constants;
+import de.stytex.foobar.config.constant.Constants;
 import java.util.Arrays;
 import javax.inject.Inject;
 import org.aspectj.lang.JoinPoint;

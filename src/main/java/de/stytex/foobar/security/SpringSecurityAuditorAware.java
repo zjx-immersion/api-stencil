@@ -3,7 +3,7 @@ package de.stytex.foobar.security;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
-import static de.stytex.foobar.config.Constants.SYSTEM_ACCOUNT;
+import static de.stytex.foobar.config.constant.Constants.SYSTEM_ACCOUNT;
 
 /**
  * Created by on 01.09.16.
