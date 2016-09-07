@@ -37,13 +37,18 @@ spring:
     thymeleaf:
         mode: XHTML
 
-#endpoints:
-#  actuator:
-#    enabled: true
+endpoints:
+  actuator:
+    enabled: true
+  health:
+    sensitive: false
 
 management:
 #    context-path: /actuators
     security:
+        enabled: false
+    health:
+      db:
         enabled: false
 
 security:
