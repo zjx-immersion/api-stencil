@@ -38,11 +38,11 @@ apply plugin: 'spring-boot'
 apply plugin: 'propdeps'
 
 bootRepackage {
-    mainClass = 'Application'
+    mainClass = 'com.api.foobar.Application'
 }
 
 springBoot {
-    mainClass = 'Application'
+    mainClass = 'com.api.foobar.Application'
     executable = true
 }
 

@@ -8,7 +8,7 @@
     <property name="logPath" value="logs"/>
     <property name="logFile" value="service"/>
     <!--<property name="logPattern" value="%d [%thread] %level APP=%property{app} | ENV=%property{env} | CORRELATION_ID=%X{CorrelationID} | CLIENT_ID=%X{clientID} | CLIENT_VERSION=%X{clientVersion} | %logger{35} - %msg%n"/>-->
-    <property name="logPattern" value="%d [%thread] %level | CORRELATION_ID=%X{CorrelationID} | CLIENT_ID=%X{clientID} | CLIENT_VERSION=%X{clientVersion} | UUID=%X{UUID} | %logger{35} - %msg%n"/>
+    <property name="logPattern" value="%d [%thread] %level | CORRELATION_ID=%X{correlationID} | CLIENT_ID=%X{clientID} | CLIENT_VERSION=%X{clientVersion} | UUID=%X{UUID} | %logger{35} - %msg%n"/>
 
     <!-- log all level messages -->
     <appender name="service" class="ch.qos.logback.core.rolling.RollingFileAppender" >
