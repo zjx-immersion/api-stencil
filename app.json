@@ -1,0 +1,24 @@
+{
+  "name": "api-stencil",
+  "scripts": {
+  },
+  "env": {
+    "spring.profiles.active": "local"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/gradle"
+    },
+    {
+      "url": "https://github.com/zjx-immersion/api-stencil.git"
+    }
+  ]
+}
