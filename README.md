@@ -41,3 +41,5 @@ To setup this project in Jenkins, use the following configuration:
 * Post-build Actions
     * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
 
+# Auto-Deploy in Heroku 
+https://apistencil.herokuapp.com/api-stencil/info 
