@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/zjx-immersion/api-stencil.svg?branch=master)](https://travis-ci.org/zjx-immersion/api-stencil)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zjx-immersion/api-stencil)
+
 # Springboot API stencil
 
 ## Development
