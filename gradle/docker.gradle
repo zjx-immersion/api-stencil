@@ -13,6 +13,11 @@ task buildDocker(type: Docker, dependsOn: build) {
             include "*.*"
         }
         copy {
+            from "config/"
+            into "${stageDir}/config"
+            include "*.*"
+        }
+        copy {
             from "build/libs"
             into stageDir
             include "*.jar*"
