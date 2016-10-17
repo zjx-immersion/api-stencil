@@ -1,0 +1,16 @@
+apply plugin: "jacoco"
+
+//mainClassName = "org.gradle.MyMain"
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
