@@ -4,6 +4,7 @@ task buildDocker(type: Docker, dependsOn: build) {
     push = false
     tag = 'foo'
     tagVersion = 'latest'
+    applicationName = jar.baseName
     dockerfile = file('src/main/docker/Dockerfile')
     doFirst {
         copy {
@@ -12,9 +13,14 @@ task buildDocker(type: Docker, dependsOn: build) {
             include "*.*"
         }
         copy {
+            from "config/"
+            into "${stageDir}/config"
+            include "*.*"
+        }
+        copy {
             from "build/libs"
             into stageDir
-            include "*.war*"
+            include "*.jar*"
         }
     }
 }

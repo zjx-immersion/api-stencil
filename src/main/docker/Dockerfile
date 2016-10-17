@@ -1,10 +1,11 @@
 FROM java:openjdk-8-jdk-alpine
 
-# add directly the war
-ADD *.war /app.war
-
-RUN sh -c 'touch /app.war'
 VOLUME /tmp
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.war"]
 
+ADD entrypoint.sh entrypoint.sh
+ADD config/ /config
+ADD api-stencil-1.0.0-SNAPSHOT.jar app.jar
+RUN sh -c 'touch /app.jar'
+RUN chmod +x entrypoint.sh
 EXPOSE 8081
+CMD ["./entrypoint.sh"]
