@@ -88,9 +88,9 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
 
     @Configuration
     @ConditionalOnClass(Graphite.class)
-    public static class GraphiteRegistry {
+    public static class GraphitemmnbvcRegistry {
 
-        private final Logger log = LoggerFactory.getLogger(GraphiteRegistry.class);
+        private final Logger log = LoggerFactory.getLogger(GraphitemmnbvcRegistry.class);
 
         @Inject
         private MetricRegistry metricRegistry;
