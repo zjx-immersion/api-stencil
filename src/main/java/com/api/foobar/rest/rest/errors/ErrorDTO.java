@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest.errors;
+package com.api.foobar.rest.rest.errors;
 
 import java.io.Serializable;
 import java.util.ArrayList;

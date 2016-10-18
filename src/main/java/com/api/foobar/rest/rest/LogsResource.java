@@ -1,6 +1,6 @@
-package com.api.foobar.web.rest;
+package com.api.foobar.rest.rest;
 
-import com.api.foobar.web.rest.dto.LoggerDTO;
+import com.api.foobar.rest.rest.dto.LoggerDTO;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;

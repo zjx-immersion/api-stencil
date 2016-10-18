@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest;
+package com.api.foobar.rest.rest;
 
 import com.api.foobar.domain.util.JSR310LocalDateDeserializer;
 import com.api.foobar.domain.util.JSR310DateTimeSerializer;

@@ -26,7 +26,7 @@ import javax.servlet.*;
  *
  * @author Jianxin Zhong
  *
- * Configuration of web application with Servlet 3.0 APIs.
+ * Configuration of rest application with Servlet 3.0 APIs.
  */
 @Configuration
 public class WebConfigurer implements ServletContextInitializer, EmbeddedServletContainerCustomizer {
@@ -108,7 +108,7 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
 //     */
 //    private void initH2Console(ServletContext servletContext) {
 //        log.debug("Initialize H2 console");
-//        ServletRegistration.Dynamic h2ConsoleServlet = servletContext.addServlet("H2Console", new org.h2.server.web.WebServlet());
+//        ServletRegistration.Dynamic h2ConsoleServlet = servletContext.addServlet("H2Console", new org.h2.server.rest.WebServlet());
 //        h2ConsoleServlet.addMapping("/h2-console/*");
 //        h2ConsoleServlet.setInitParameter("-properties", "src/main/resources/");
 //        h2ConsoleServlet.setLoadOnStartup(1);

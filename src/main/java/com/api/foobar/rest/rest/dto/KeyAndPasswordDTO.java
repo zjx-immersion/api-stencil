@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest.dto;
+package com.api.foobar.rest.rest.dto;
 
 /**
  * Created by on 01.09.16.

@@ -1,9 +1,9 @@
-package com.api.foobar.web.rest;
+package com.api.foobar.rest.rest;
 
 import com.api.foobar.repository.FooMemeryRepository;
 import com.codahale.metrics.annotation.Timed;
 import com.api.foobar.domain.Foo;
-import com.api.foobar.web.rest.util.HeaderUtil;
+import com.api.foobar.rest.rest.util.HeaderUtil;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;

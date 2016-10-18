@@ -30,7 +30,7 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-//        web.ignoring()
+//        rest.ignoring()
 //            .antMatchers(HttpMethod.OPTIONS, "/**")
 //            .antMatchers("/app/**/*.{js,html}")
 //            .antMatchers("/bower_components/**")
