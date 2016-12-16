@@ -1,9 +1,11 @@
 package com.api.foobar.rest.rest;
 
-import com.api.foobar.repository.FooMemeryRepository;
-import com.codahale.metrics.annotation.Timed;
 import com.api.foobar.domain.Foo;
+import com.api.foobar.repository.FooMemeryRepository;
+import com.api.foobar.rest.rest.dto.FoosDTO;
+import com.api.foobar.rest.rest.dto.ResponseResourceDTO;
 import com.api.foobar.rest.rest.util.HeaderUtil;
+import com.codahale.metrics.annotation.Timed;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -36,8 +38,8 @@ public class FooResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @RequestMapping(value = "/foos",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Foo> createFoo(@RequestBody Foo foo) throws URISyntaxException {
         log.debug("REST request to save Foo : {}", foo);
@@ -48,8 +50,8 @@ public class FooResource {
         }
         Foo result = fooRepository.save(foo);
         return ResponseEntity.created(new URI("/api/foos/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert("foo", result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert("foo", result.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -62,8 +64,8 @@ public class FooResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @RequestMapping(value = "/foos",
-        method = RequestMethod.PUT,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Foo> updateFoo(@RequestBody Foo foo) throws URISyntaxException {
         log.debug("REST request to update Foo : {}", foo);
@@ -72,8 +74,8 @@ public class FooResource {
         }
         Foo result = fooRepository.save(foo);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert("foo", foo.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityUpdateAlert("foo", foo.getId().toString()))
+                .body(result);
     }
 
     /**
@@ -82,13 +84,14 @@ public class FooResource {
      * @return the ResponseEntity with status 200 (OK) and the list of foos in body
      */
     @RequestMapping(value = "/foos",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Foo> getAllFoos() {
+    public ResponseEntity<ResponseResourceDTO> getAllFoos() {
         log.debug("REST request to get all Foos");
         List<Foo> foos = fooRepository.findAll();
-        return foos;
+        ResponseResourceDTO foosResourceDTO = new ResponseResourceDTO(new FoosDTO(foos));
+        return new ResponseEntity<ResponseResourceDTO>(foosResourceDTO, HttpStatus.OK);
     }
 
     /**
@@ -98,17 +101,17 @@ public class FooResource {
      * @return the ResponseEntity with status 200 (OK) and with body the foo, or with status 404 (Not Found)
      */
     @RequestMapping(value = "/foos/{id}",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Foo> getFoo(@PathVariable Long id) {
         log.debug("REST request to get Foo : {}", id);
         Foo foo = fooRepository.findOne(id);
         return Optional.ofNullable(foo)
-            .map(result -> new ResponseEntity<>(
-                result,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                .map(result -> new ResponseEntity<>(
+                        result,
+                        HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**
@@ -118,8 +121,8 @@ public class FooResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @RequestMapping(value = "/foos/{id}",
-        method = RequestMethod.DELETE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteFoo(@PathVariable Long id) {
         log.debug("REST request to delete Foo : {}", id);
