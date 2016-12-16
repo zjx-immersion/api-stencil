@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest.errors;
+package com.api.foobar.rest.rest.errors;
 
 /**
  * Created by on 01.09.16.

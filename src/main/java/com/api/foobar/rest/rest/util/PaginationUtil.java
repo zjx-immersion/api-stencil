@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest.util;
+package com.api.foobar.rest.rest.util;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;

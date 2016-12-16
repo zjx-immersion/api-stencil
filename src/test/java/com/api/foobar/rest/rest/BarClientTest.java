@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest;
+package com.api.foobar.rest.rest;
 
 import com.api.foobar.Application;
 import com.api.foobar.client.BarClient;

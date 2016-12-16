@@ -1,8 +1,9 @@
-package com.api.foobar.web.rest;
+package com.api.foobar.rest.rest;
 
-import com.api.foobar.repository.FooMemeryRepository;
 import com.api.foobar.Application;
+import com.api.foobar.ApplicationWebXml;
 import com.api.foobar.domain.Foo;
+import com.api.foobar.repository.FooMemeryRepository;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -15,7 +16,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,6 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
+//@ContextConfiguration(classes = ApplicationWebXml.class, loader = AnnotationConfigContextLoader.class)
+//@TestPropertySource(locations="classpath:test.properties")
 @WebAppConfiguration
 @IntegrationTest
 public class FooResourceIntTest {
@@ -102,8 +107,8 @@ public class FooResourceIntTest {
         restFooMockMvc.perform(get("/api/foos?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(foo.getId().intValue())))
-                .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())));
+                .andExpect(jsonPath("$.data[*].attributes.id").value(hasItem(foo.getId().intValue())))
+                .andExpect(jsonPath("$.data[*].attributes.value").value(hasItem(DEFAULT_VALUE.toString())));
     }
 
     @Test

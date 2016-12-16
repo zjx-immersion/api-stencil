@@ -1,4 +1,4 @@
-package com.api.foobar.web.rest.dto;
+package com.api.foobar.rest.rest.dto;
 
 import ch.qos.logback.classic.Logger;
 import com.fasterxml.jackson.annotation.JsonCreator;

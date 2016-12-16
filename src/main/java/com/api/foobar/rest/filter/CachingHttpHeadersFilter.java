@@ -1,4 +1,4 @@
-package com.api.foobar.web.filter;
+package com.api.foobar.rest.filter;
 
 import com.api.foobar.config.properties.HttpProperties;
 import java.io.IOException;

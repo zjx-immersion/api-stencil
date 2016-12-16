@@ -13,7 +13,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
  *
  * @author Jianxin Zhong
  *
- * his is a helper Java class that provides an alternative to creating a web.xml.
+ * his is a helper Java class that provides an alternative to creating a rest.xml.
  */
 
 public class ApplicationWebXml extends SpringBootServletInitializer {

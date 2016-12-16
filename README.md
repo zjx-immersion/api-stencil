@@ -26,6 +26,10 @@ To optimize the foo client for production, run:
 To ensure everything worked, run:
 
     java -jar build/libs/*.jar --spring.profiles.active=local
+    
+To build docker images which include the latest artifact
+  
+    ./gradlew dockerBuild
 
 ## Continuous Integration
 

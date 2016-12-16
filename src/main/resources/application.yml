@@ -24,6 +24,10 @@ logging:
 spring:
     application:
         name: ${application.id}
+    cloud:
+      circuit:
+        breaker:
+          enabled: true
     jpa:
         open-in-view: false
         hibernate:
@@ -41,6 +45,9 @@ endpoints:
   actuator:
     enabled: true
   health:
+    time-to-live: 30000
+    sensitive: false
+  metrics:
     sensitive: false
 
 management:
@@ -101,6 +108,16 @@ eureka:
 ribbon:
     eureka:
         enabled: true
+
+hystrix:
+  stream:
+    endpoint: true
+  command:
+     default:
+       execution:
+         isolation:
+           thread:
+             timeoutInmilliseconds: 5000
 
 
 
