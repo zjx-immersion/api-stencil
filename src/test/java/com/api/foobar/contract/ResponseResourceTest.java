@@ -26,6 +26,4 @@ public class ResponseResourceTest {
 
     }
 
-
-    public class RequestResourceDummyDTO extends
 }
