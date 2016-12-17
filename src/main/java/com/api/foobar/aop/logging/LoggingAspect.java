@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
  * Created by on 01.09.16.
  *
  * @author Jianxin Zhong
- *
- * Aspect for logging execution of service and repository Spring components.
+ *         <p>
+ *         Aspect for logging execution of service and repository Spring components.
  */
 @Aspect
 @Component
@@ -32,7 +32,10 @@ public class LoggingAspect {
     @Inject
     private Environment env;
 
-    @Pointcut("within(de.stytex.foobar.repository..*) || within(de.stytex.foobar.service..*) || within(de.stytex.foobar.web.rest..*)")
+    @Pointcut("within(com.api.foobar.repository..*) "
+            + "|| within(com.api.foobar.service..*) "
+            + "|| within(com.api.foobar.web.rest..*)"
+            + "|| within(com.api.foobar.config.exception..*)")
     public void loggingPointcut() {
     }
 
