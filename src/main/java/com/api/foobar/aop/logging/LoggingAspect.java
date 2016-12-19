@@ -34,8 +34,8 @@ public class LoggingAspect {
 
     @Pointcut("within(com.api.foobar.repository..*) "
             + "|| within(com.api.foobar.service..*) "
-            + "|| within(com.api.foobar.web.rest..*)"
-            + "|| within(com.api.foobar.config.exception..*)")
+            + "|| within(com.api.foobar.web.rest..*)")
+//            + "|| within(com.api.foobar.config.exception..*)")
     public void loggingPointcut() {
     }
 

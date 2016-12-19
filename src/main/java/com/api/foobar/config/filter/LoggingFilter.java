@@ -62,7 +62,7 @@ public class LoggingFilter implements Filter {
         try {
             chain.doFilter(req, res);
         } finally {
-            RequestContextHolder.clear();
+//            RequestContextHolder.clear(); //todo : remove this clear logic, it seems the MDC will help manage the data in diff thread
         }
     }
 
@@ -78,6 +78,6 @@ public class LoggingFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        RequestContextHolder.clear();
     }
 }
