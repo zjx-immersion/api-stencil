@@ -161,9 +161,9 @@ public class ResourceGlobalExceptionHandler extends ResponseEntityExceptionHandl
     }
 
     private void logErrorIfIs5xxError(Exception e, HttpStatus status, String logErrorMsg) {
-        if (status.is5xxServerError()) {
+//        if (status.is5xxServerError()) {
 //            logger.error(logErrorMsg, e);  //todo : comment this sentence because there is a log aspect in this codebase
-        }
+//        }
     }
 
 

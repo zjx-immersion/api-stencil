@@ -2,6 +2,7 @@ package com.api.foobar.config.filter;
 
 import com.api.foobar.context.RequestContext;
 import com.api.foobar.context.RequestContextHolder;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -59,11 +61,11 @@ public class LoggingFilter implements Filter {
 
         RequestContextHolder.set(requestContext);
 
-        try {
-            chain.doFilter(req, res);
-        } finally {
+//        try {
+        chain.doFilter(req, res);
+//        } finally {
 //            RequestContextHolder.clear(); //todo : remove this clear logic, it seems the MDC will help manage the data in diff thread
-        }
+//        }
     }
 
     private void extractAdditionalHeadersIntoRequestContext(HttpServletRequest request, RequestContext requestContext) {
