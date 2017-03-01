@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Created by jxzhong on 12/16/16.
  */
-@ConfigurationProperties(prefix = "apicommon", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "api-common", ignoreUnknownFields = false)
 public class ApiCommonProperties {
     private GlobalErrorResponse globalErrorResponse;
 

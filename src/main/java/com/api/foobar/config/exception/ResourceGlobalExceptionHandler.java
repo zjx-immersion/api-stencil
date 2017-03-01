@@ -17,6 +17,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -161,9 +162,9 @@ public class ResourceGlobalExceptionHandler extends ResponseEntityExceptionHandl
     }
 
     private void logErrorIfIs5xxError(Exception e, HttpStatus status, String logErrorMsg) {
-//        if (status.is5xxServerError()) {
-//            logger.error(logErrorMsg, e);  //todo : comment this sentence because there is a log aspect in this codebase
-//        }
+        if (status.is5xxServerError()) {
+            logger.error(logErrorMsg, e);  //todo : comment this sentence because there is a log aspect in this codebase
+        }
     }
 
 

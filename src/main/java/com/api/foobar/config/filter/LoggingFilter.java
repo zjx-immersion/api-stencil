@@ -61,11 +61,11 @@ public class LoggingFilter implements Filter {
 
         RequestContextHolder.set(requestContext);
 
-//        try {
-        chain.doFilter(req, res);
-//        } finally {
-//            RequestContextHolder.clear(); //todo : remove this clear logic, it seems the MDC will help manage the data in diff thread
-//        }
+        try {
+            chain.doFilter(req, res);
+        } finally {
+            RequestContextHolder.clear(); //todo : remove this clear logic, it seems the MDC will help manage the data in diff thread
+        }
     }
 
     private void extractAdditionalHeadersIntoRequestContext(HttpServletRequest request, RequestContext requestContext) {

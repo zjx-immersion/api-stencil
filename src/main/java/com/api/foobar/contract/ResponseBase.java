@@ -8,8 +8,13 @@ import java.util.List;
  * Created by jxzhong on 10/18/16.
  */
 public abstract class ResponseBase {
+
     @ApiModelProperty(value = "Errors", required = false)
     private List<ResponseError> errors;
+
+    public List<ResponseError> getErrors() {
+        return errors;
+    }
 
     public void addError(String title) {
         initErrors();
